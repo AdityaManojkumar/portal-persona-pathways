@@ -235,11 +235,11 @@ const AdminDashboard = () => {
                       </div>
                       <div className="flex items-center space-x-3">
                         <Badge 
-                          className={`${
+                          className={
                             template.complexity === 'Low' ? 'bg-green-500/20 text-green-300' :
                             template.complexity === 'Medium' ? 'bg-yellow-500/20 text-yellow-300' :
                             'bg-red-500/20 text-red-300'
-                          }`}
+                          }
                         >
                           {template.complexity}
                         </Badge>
@@ -286,7 +286,7 @@ const AdminDashboard = () => {
                   <div className="space-y-3">
                     <div className="flex justify-between">
                       <span className="text-white">API Response Time</span>
-                      <span className="text-green-300">< 200ms</span>
+                      <span className="text-green-300">&lt; 200ms</span>
                     </div>
                     <Progress value={95} className="h-2" />
                   </div>
