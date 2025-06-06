@@ -9,7 +9,9 @@ import {
   Award, 
   ArrowRight,
   CheckCircle,
-  Star
+  Star,
+  Shield,
+  UserCheck
 } from 'lucide-react';
 
 const Index = () => {
@@ -119,22 +121,22 @@ const Index = () => {
           {/* Role Selection Preview */}
           <div className="text-center">
             <h2 className="text-3xl font-bold text-white mb-8">Choose Your Path</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
               <Card className="backdrop-blur-sm bg-white/10 border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:scale-105 cursor-pointer group">
                 <CardHeader className="text-center">
                   <div className="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-500/30 transition-colors">
                     <GraduationCap className="w-8 h-8 text-white" />
                   </div>
-                  <CardTitle className="text-white text-2xl">I'm a Student</CardTitle>
+                  <CardTitle className="text-white text-xl">Student</CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">
-                  <CardDescription className="text-white/70 text-base mb-6">
-                    Access courses, track progress, and connect with your lecturers
+                  <CardDescription className="text-white/70 text-sm mb-4">
+                    Access courses and track your academic progress
                   </CardDescription>
                   <div className="space-y-2 text-left">
-                    {['View course materials', 'Submit assignments', 'Track grades', 'Join study groups'].map((item, i) => (
-                      <div key={i} className="flex items-center text-white/80 text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-400 mr-2" />
+                    {['View courses', 'Submit assignments', 'Track grades'].map((item, i) => (
+                      <div key={i} className="flex items-center text-white/80 text-xs">
+                        <CheckCircle className="w-3 h-3 text-green-400 mr-2" />
                         {item}
                       </div>
                     ))}
@@ -147,16 +149,60 @@ const Index = () => {
                   <div className="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-purple-500/30 transition-colors">
                     <BookOpen className="w-8 h-8 text-white" />
                   </div>
-                  <CardTitle className="text-white text-2xl">I'm a Lecturer</CardTitle>
+                  <CardTitle className="text-white text-xl">Lecturer</CardTitle>
                 </CardHeader>
                 <CardContent className="text-center">
-                  <CardDescription className="text-white/70 text-base mb-6">
-                    Manage courses, grade assignments, and engage with students
+                  <CardDescription className="text-white/70 text-sm mb-4">
+                    Manage courses and engage with students
                   </CardDescription>
                   <div className="space-y-2 text-left">
-                    {['Create courses', 'Grade assignments', 'Track student progress', 'Send announcements'].map((item, i) => (
-                      <div key={i} className="flex items-center text-white/80 text-sm">
-                        <CheckCircle className="w-4 h-4 text-green-400 mr-2" />
+                    {['Create courses', 'Grade assignments', 'Track progress'].map((item, i) => (
+                      <div key={i} className="flex items-center text-white/80 text-xs">
+                        <CheckCircle className="w-3 h-3 text-green-400 mr-2" />
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="backdrop-blur-sm bg-white/10 border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:scale-105 cursor-pointer group">
+                <CardHeader className="text-center">
+                  <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-red-500/30 transition-colors">
+                    <Shield className="w-8 h-8 text-white" />
+                  </div>
+                  <CardTitle className="text-white text-xl">Admin</CardTitle>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <CardDescription className="text-white/70 text-sm mb-4">
+                    Oversee system and manage all users
+                  </CardDescription>
+                  <div className="space-y-2 text-left">
+                    {['Manage users', 'System settings', 'View reports'].map((item, i) => (
+                      <div key={i} className="flex items-center text-white/80 text-xs">
+                        <CheckCircle className="w-3 h-3 text-green-400 mr-2" />
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="backdrop-blur-sm bg-white/10 border-white/20 hover:bg-white/15 transition-all duration-300 transform hover:scale-105 cursor-pointer group">
+                <CardHeader className="text-center">
+                  <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-green-500/30 transition-colors">
+                    <UserCheck className="w-8 h-8 text-white" />
+                  </div>
+                  <CardTitle className="text-white text-xl">Verifier</CardTitle>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <CardDescription className="text-white/70 text-sm mb-4">
+                    Verify credentials and validate documents
+                  </CardDescription>
+                  <div className="space-y-2 text-left">
+                    {['Verify documents', 'Validate credentials', 'Quality control'].map((item, i) => (
+                      <div key={i} className="flex items-center text-white/80 text-xs">
+                        <CheckCircle className="w-3 h-3 text-green-400 mr-2" />
                         {item}
                       </div>
                     ))}

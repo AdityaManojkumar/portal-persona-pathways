@@ -27,11 +27,18 @@ const SignIn = () => {
         description: "You have been successfully signed in.",
       });
       
-      // For demo purposes, route based on email domain
+      // Route based on email patterns for demo purposes
       if (email.includes('student') || email.includes('edu')) {
         navigate('/student-dashboard');
-      } else {
+      } else if (email.includes('lecturer') || email.includes('prof')) {
         navigate('/lecturer-dashboard');
+      } else if (email.includes('admin')) {
+        navigate('/admin-dashboard');
+      } else if (email.includes('verifier') || email.includes('verify')) {
+        navigate('/verifier-dashboard');
+      } else {
+        // Default to student dashboard
+        navigate('/student-dashboard');
       }
     }, 1500);
   };

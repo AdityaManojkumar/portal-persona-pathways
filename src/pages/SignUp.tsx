@@ -5,14 +5,14 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
-import { UserPlus, Mail, Lock, User, GraduationCap, BookOpen } from 'lucide-react';
+import { UserPlus, Mail, Lock, User, GraduationCap, BookOpen, Shield, UserCheck } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const SignUp = () => {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState<'student' | 'lecturer' | ''>('');
+  const [role, setRole] = useState<'student' | 'lecturer' | 'admin' | 'verifier' | ''>('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -22,7 +22,7 @@ const SignUp = () => {
     if (!role) {
       toast({
         title: "Please select your role",
-        description: "Choose whether you're a student or lecturer",
+        description: "Choose your role to continue",
         variant: "destructive"
       });
       return;
@@ -41,8 +41,12 @@ const SignUp = () => {
       // Route based on selected role
       if (role === 'student') {
         navigate('/student-dashboard');
-      } else {
+      } else if (role === 'lecturer') {
         navigate('/lecturer-dashboard');
+      } else if (role === 'admin') {
+        navigate('/admin-dashboard');
+      } else if (role === 'verifier') {
+        navigate('/verifier-dashboard');
       }
     }, 2000);
   };
@@ -131,27 +135,53 @@ const SignUp = () => {
                   <button
                     type="button"
                     onClick={() => setRole('student')}
-                    className={`p-4 rounded-lg border-2 transition-all duration-300 transform hover:scale-105 ${
+                    className={`p-3 rounded-lg border-2 transition-all duration-300 transform hover:scale-105 ${
                       role === 'student'
                         ? 'bg-white text-purple-600 border-white shadow-lg'
                         : 'bg-white/10 text-white border-white/20 hover:bg-white/20'
                     }`}
                   >
-                    <GraduationCap className="w-6 h-6 mx-auto mb-2" />
-                    <span className="text-sm font-medium">Student</span>
+                    <GraduationCap className="w-5 h-5 mx-auto mb-1" />
+                    <span className="text-xs font-medium">Student</span>
                   </button>
                   
                   <button
                     type="button"
                     onClick={() => setRole('lecturer')}
-                    className={`p-4 rounded-lg border-2 transition-all duration-300 transform hover:scale-105 ${
+                    className={`p-3 rounded-lg border-2 transition-all duration-300 transform hover:scale-105 ${
                       role === 'lecturer'
                         ? 'bg-white text-purple-600 border-white shadow-lg'
                         : 'bg-white/10 text-white border-white/20 hover:bg-white/20'
                     }`}
                   >
-                    <BookOpen className="w-6 h-6 mx-auto mb-2" />
-                    <span className="text-sm font-medium">Lecturer</span>
+                    <BookOpen className="w-5 h-5 mx-auto mb-1" />
+                    <span className="text-xs font-medium">Lecturer</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setRole('admin')}
+                    className={`p-3 rounded-lg border-2 transition-all duration-300 transform hover:scale-105 ${
+                      role === 'admin'
+                        ? 'bg-white text-purple-600 border-white shadow-lg'
+                        : 'bg-white/10 text-white border-white/20 hover:bg-white/20'
+                    }`}
+                  >
+                    <Shield className="w-5 h-5 mx-auto mb-1" />
+                    <span className="text-xs font-medium">Admin</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setRole('verifier')}
+                    className={`p-3 rounded-lg border-2 transition-all duration-300 transform hover:scale-105 ${
+                      role === 'verifier'
+                        ? 'bg-white text-purple-600 border-white shadow-lg'
+                        : 'bg-white/10 text-white border-white/20 hover:bg-white/20'
+                    }`}
+                  >
+                    <UserCheck className="w-5 h-5 mx-auto mb-1" />
+                    <span className="text-xs font-medium">Verifier</span>
                   </button>
                 </div>
               </div>
